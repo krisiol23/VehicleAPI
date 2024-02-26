@@ -13,9 +13,21 @@ uvicorn main:app --reload
 # Endpoints:
 #### POST /cars
 Add a car make and model
+```
+{
+  "make": "Ford",
+  "model": "Fiesta"
+}
+```
 
 #### POST /rate
 Add a rate for a car from 1 to 5
+```
+{
+  "rate": 5,
+  "model": "Focus"
+}
+```
 
 #### GET /cars
 list of all cars with their current average rate
