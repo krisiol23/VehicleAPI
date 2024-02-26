@@ -91,9 +91,9 @@ def create_cars(r:Car, db: Session = Depends(get_db)):
             db.refresh(new_car)
             return new_car
         except:
-            return "SQL ERROR"
+            return {"message": "SQL ERROR"}
     else:
-        return "Car Not Found"
+        return {"message":"Car Not Found"}
     
 @app.post("/rate/", status_code=status.HTTP_201_CREATED)
 def add_rate(r:Rate, db: Session = Depends(get_db)):
@@ -107,6 +107,6 @@ def add_rate(r:Rate, db: Session = Depends(get_db)):
         else:
             return {"message": "Rate must be between 1 and 5"}
     except:
-        return "SQL ERROR"
+        return {"message": "SQL ERROR"}
     
 
