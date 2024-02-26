@@ -9,7 +9,7 @@ from typing import List
 
 class Car(BaseModel):
     make: str
-    modelName: str
+    model: str
 
 class Rate(BaseModel):
     rate: int
@@ -83,9 +83,9 @@ def all_cars(response: Response,db: Session = Depends(get_db) ):
 
 @app.post("/cars/", status_code=status.HTTP_201_CREATED)
 def create_cars(r:Car, db: Session = Depends(get_db)):
-    if(check(r.make, r.modelName)):
+    if(check(r.make, r.model)):
         try:
-            new_car = models.Car(make = r.make, model = r.modelName)
+            new_car = models.Car(make = r.make.lower(), model = r.model.lower())
             db.add(new_car)
             db.commit()
             db.refresh(new_car)
@@ -99,7 +99,7 @@ def create_cars(r:Car, db: Session = Depends(get_db)):
 def add_rate(r:Rate, db: Session = Depends(get_db)):
     try:
         if(r.rate >=1 and r.rate <=5):
-            new_rate = models.Rate(rate = r.rate, carModel = r.model)
+            new_rate = models.Rate(rate = r.rate, carModel = r.model.lower())
             db.add(new_rate)
             db.commit()
             db.refresh(new_rate)
