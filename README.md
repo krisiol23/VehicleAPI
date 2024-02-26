@@ -5,6 +5,11 @@ Simple cars makes and models database interacting with API. Create in FastAPI an
 ```
 pip install -r requirements.txt
 ```
+In the app folder:
+```
+uvicorn main:app --reload
+```
+
 # Endpoints:
 #### POST /cars
 Add a car make and model
