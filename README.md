@@ -1,5 +1,5 @@
 # VehicleAPI
-Simple cars makes and models database interacting with API. Create in FastAPI and sqlalchemy.
+Simple cars makes and models database interacting with API. Created in FastAPI and sqlalchemy.
 
 # Setup
 ```
